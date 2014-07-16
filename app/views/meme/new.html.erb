@@ -1,13 +1,12 @@
 <div class="container">
   <div class="panel panel-success">
     <div class="panel-heading">
-      <h3 class="panel-title">New Message</h3>
+      <h3 class="panel-title">New Meme</h3>
     </div>
     <%= simple_form_for(@meme) do |f| %>
       <div class="panel-body">
-        <%= f.file_field :photo %><br>
-        <%= f.select :category, ["Spongebob", "Baby"], :prompt => 'Select Category'%><br><br>
-        <!-- <%= f.input :category, label: 'Enter Category:' %><br> -->
+        <%= f.input :category, as: :select, collection: ['succes baby', 'fry'], :prompt => 'Select Category' %><br><br>
+        <%= f.input :photo %><br>
         <%= f.submit class: "btn btn-success"%>
       </div>
     <% end %>

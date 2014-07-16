@@ -11,9 +11,8 @@ class MemeController < ApplicationController
 
   def create
 
-     meme = meme_params
-
-    @meme = Meme.create user: current_user, photo: meme[:photo], category: meme[:category]
+    @meme = Meme.new meme_params
+    @meme.user = current_user
 
      if @meme.save
         redirect_to root_path
