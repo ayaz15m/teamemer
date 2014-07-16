@@ -7,6 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+User.destroy_all
+Meme.destroy_all
+
 User.create email: "ayaz@example.com", password: "ayazayaz", password_confirmation: "ayazayaz"
 User.create email: "sean@example.com", password: "seansean", password_confirmation: "seansean"
 User.create email: "eric@example.com", password: "ericeric", password_confirmation: "ericeric"
