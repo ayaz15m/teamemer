@@ -1,2 +1,10 @@
-<h1>Meme#index</h1>
-<p>Find me in app/views/meme/index.html.erb</p>
+<div class="container">
+  <%= link_to 'Create Message', new_message_path %>
+  <h3>Signed in as <%= current_user.email %> </h3><br>
+
+  <% @meme.each do |meme| %>
+    <%= image_tag meme.photo.url(:thumb), class: "media-object" %>
+    <a href="<%= meme.photo.url %>">Larger</a><br>
+    Category: <%= meme.category %><br><br>
+  <% end %>
+</div>
