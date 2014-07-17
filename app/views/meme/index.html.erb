@@ -15,7 +15,7 @@
     <%= simple_form_for @memes, url: :root do |f| %>
       <div class="panel-body">
         <%= f.input :category, as: :select, collection: ['Person Photo', 'TV', 'Demotivational', 'Emoticon', 'Animal', 'Other'], :prompt => 'Select Category' %><br><br>
-        <%= f.submit class: "btn btn-warning", label: "Search" %>
+        <%= f.button :submit, 'Search', class: "btn btn-warning" %>
       </div>
     <% end %>
   </div>
