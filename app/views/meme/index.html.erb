@@ -1,11 +1,31 @@
-<div class="container">
-  <%= link_to 'Create Message', new_message_path %>
-  <h3>Signed in as <%= current_user.email %> </h3><br>
+<center><h1>All Memes!</h1><hr>
 
-  <% @meme.each do |meme| %>
+<% @meme.each do |meme| %>
+  <%= image_tag meme.photo.url(:thumb), class: "media-object" %>
+  <a href="<%= meme.photo.url %>">Larger</a><br>
+  <%= "http://teamemer.herokuapp.com#{meme.photo.url}" %><br>
+  Category: <%= meme.category %><br><br>
+<% end %>
+
+<% if @category.nil? %>
+  <div class="panel panel-warning">
+    <div class="panel-heading">
+      <h3 class="panel-title">Search</h3>
+    </div>
+    <%= simple_form_for @memes, url: :root do |f| %>
+      <div class="panel-body">
+        <%= f.input :category, as: :select, collection: ['Person Photo', 'TV', 'Demotivational', 'Emoticon', 'Animal', 'Other'], :prompt => 'Select Category' %><br><br>
+        <%= f.submit class: "btn btn-warning", label: "Search" %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <h1>Search Results</h1><br>
+  <% @categories.each do |meme| %>
     <%= image_tag meme.photo.url(:thumb), class: "media-object" %>
     <a href="<%= meme.photo.url %>">Larger</a><br>
-    <%= meme.photo.url %><br>
+    <h2><%= meme.photo.url %></h2><br>
     Category: <%= meme.category %><br><br>
   <% end %>
-</div>
+<% end %>
+</center>
