@@ -6,4 +6,9 @@ Rails.application.routes.draw do
 
   get "/new" => "meme#new", as: :new_message
   post "/create" => "meme#create", as: :memes
+
+  # get "meme" => "meme#index", as: :search
+  post '/' => "meme#index"
+
+  get "/display" => "meme#display", as: :display
 end

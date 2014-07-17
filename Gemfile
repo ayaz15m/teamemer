@@ -33,6 +33,9 @@ gem 'simple_form', "3.1.0.rc2"
 
 group :development, :test do
   gem 'pry'
+  gem 'better_errors'
+  gem 'quiet_assets'
+  gem 'binding_of_caller'
 end
 
 group :production do

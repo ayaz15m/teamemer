@@ -5,7 +5,7 @@
     </div>
     <%= simple_form_for(@meme) do |f| %>
       <div class="panel-body">
-        <%= f.input :category, as: :select, collection: ['succes baby', 'fry'], :prompt => 'Select Category' %><br><br>
+        <%= f.input :category, as: :select, collection: ['Person Photo', 'TV', 'Demotivational', 'Emoticon', 'Animal', 'Other'], :prompt => 'Select Category' %><br><br>
         <%= f.input :photo %><br>
         <%= f.submit class: "btn btn-success"%>
       </div>
