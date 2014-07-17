@@ -1,4 +1,4 @@
-<h1>Search Results</h1><br>
+<center><h1>Search Results</h1><hr><br>
 <% @categories.each do |meme| %>
   <%= image_tag meme.photo.url(:thumb), class: "media-object" %>
   <a href="<%= meme.photo.url %>">Larger</a><br>
