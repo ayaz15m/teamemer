@@ -1,3 +1,8 @@
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
+//= require_tree .
+
 /* jQuery toggle layout */
 $('#btnToggle').click(function(){
   if ($(this).hasClass('on')) {

@@ -1,31 +1,30 @@
 <center><h1>All Memes!</h1><hr>
 
-<% @meme.each do |meme| %>
+<% @memes.each do |meme| %>
   <%= image_tag meme.photo.url(:thumb), class: "media-object" %>
   <a href="<%= meme.photo.url %>">Larger</a><br>
-  <%= "http://teamemer.herokuapp.com#{meme.photo.url}" %><br>
-  Category: <%= meme.category %><br><br>
-<% end %>
-
-<% if @category.nil? %>
-  <div class="panel panel-warning">
-    <div class="panel-heading">
-      <h3 class="panel-title">Search</h3>
-    </div>
-    <%= simple_form_for @memes, url: :root do |f| %>
-      <div class="panel-body">
-        <%= f.input :category, as: :select, collection: ['Person Photo', 'TV', 'Demotivational', 'Emoticon', 'Animal', 'Other'], :prompt => 'Select Category' %><br><br>
-        <%= f.button :submit, 'Search', class: "btn btn-warning" %>
-      </div>
-    <% end %>
-  </div>
-<% else %>
-  <h1>Search Results</h1><br>
-  <% @categories.each do |meme| %>
-    <%= image_tag meme.photo.url(:thumb), class: "media-object" %>
-    <a href="<%= meme.photo.url %>">Larger</a><br>
-    <h2><%= meme.photo.url %></h2><br>
-    Category: <%= meme.category %><br><br>
-  <% end %>
+  <form>
+    <textarea name="text_area" rows="1" cols="85">
+      <%= "http://teamemer.herokuapp.com#{meme.photo.url}" %>
+    </textarea><br>
+    <input type="button" class="btn btn-danger" value="Click and Cmd+C" onClick="javascript:this.form.text_area.focus();this.form.text_area.select();">
+  </form>
+  <br>Category: <%= meme.category %><br><br>
 <% end %>
 </center>
+
+<SCRIPT LANGUAGE="JavaScript">
+<SPAN ID="copytext" STYLE="height:150;width:162;background-color:pink">
+</SPAN>
+
+<TEXTAREA ID="holdtext" STYLE="display:none;">
+</TEXTAREA>
+<BUTTON onClick="ClipBoard();">Copy to Clipboard</BUTTON>
+
+function ClipBoard()
+{
+holdtext.innerText = copytext.innerText;
+Copied = holdtext.createTextRange();
+Copied.execCommand("Copy");
+}
+</SCRIPT>

@@ -2,10 +2,14 @@ class MemeController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @meme = Meme.all
-    @memes = Meme.new
 
-    if params[:meme]
+    @memes = Meme.all
+    @meme = Meme.new
+
+    @search = Search.new(params[:search])
+    @memes = @search.search
+
+    if params[:search]
       @category = search_params[:category]
       @categories = Meme.where(category: @category)
 
@@ -40,6 +44,6 @@ class MemeController < ApplicationController
 
   private
     def search_params
-      params.require(:meme).permit(:category)
+      params.require(:search).permit(:category)
     end
 end
