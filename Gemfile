@@ -29,6 +29,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'rmagick', require: false
 gem 'simple_form', "3.1.0.rc2"
+gem 'zeroclipboard-rails', '~> 0.1.0'
 
 
 group :development, :test do

@@ -3,8 +3,13 @@
 <% @meme.each do |meme| %>
   <%= image_tag meme.photo.url(:thumb), class: "media-object" %>
   <a href="<%= meme.photo.url %>">Larger</a><br>
-  <%= "http://teamemer.herokuapp.com#{meme.photo.url}" %><br>
-  Category: <%= meme.category %><br><br>
+  <form>
+    <textarea name="text_area" rows="1" cols="80">
+      <%= "http://teamemer.herokuapp.com#{meme.photo.url}" %>
+    </textarea><br>
+    <input type="button" class="btn btn-danger" value="Click and Cmd+C" onClick="javascript:this.form.text_area.focus();this.form.text_area.select();">
+  </form>
+  <br>Category: <%= meme.category %><br><br>
 <% end %>
 
 <% if @category.nil? %>
@@ -19,13 +24,22 @@
       </div>
     <% end %>
   </div>
-<% else %>
-  <h1>Search Results</h1><br>
-  <% @categories.each do |meme| %>
-    <%= image_tag meme.photo.url(:thumb), class: "media-object" %>
-    <a href="<%= meme.photo.url %>">Larger</a><br>
-    <h2><%= meme.photo.url %></h2><br>
-    Category: <%= meme.category %><br><br>
-  <% end %>
 <% end %>
 </center>
+
+<SCRIPT LANGUAGE="JavaScript">
+<SPAN ID="copytext" STYLE="height:150;width:162;background-color:pink">
+This text will be copied onto the clipboard when you click the button below. Try it!
+</SPAN>
+
+<TEXTAREA ID="holdtext" STYLE="display:none;">
+</TEXTAREA>
+<BUTTON onClick="ClipBoard();">Copy to Clipboard</BUTTON>
+
+function ClipBoard()
+{
+holdtext.innerText = copytext.innerText;
+Copied = holdtext.createTextRange();
+Copied.execCommand("Copy");
+}
+</SCRIPT>
