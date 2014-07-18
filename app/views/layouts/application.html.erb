@@ -1,45 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Memer</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <title>Teamemer</title>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
   <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
 </head>
-<body>
+<!-- <body> -->
+  <nav class="navbar navbar-fixed-top header">
+ 	<div class="col-md-12">
+    <div class="navbar-header">
 
-<div class="container">
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <ul class="navbar-brand" style = "font-family: Cursive"><%= link_to "Teamemer!", root_path%></ul>
-        <% if user_signed_in? %>
-          <p class="navbar-text">Signed in as <%= current_user.email %></p>
-        <% end %>
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
-            <li><%= link_to "Home", root_path%></li>
-            <li><%= link_to 'Create Message', new_message_path %></li>
-            <li><%= link_to("Log Out", destroy_user_session_path, :method => :delete) %></li><br><br>
-          <% else %>
-            <p class="notice"><%= notice %></p>
-            <font color="red" class="alert"><%= alert %></font>
-          <% end %>
-        </ul>
-      </div>
+      <a href="/" target="_ext" class="navbar-brand">Teamemer!</a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1">
+      <i class="glyphicon glyphicon-search"></i>
+      </button>
+
     </div>
-  </nav>
+      <form class="navbar-form pull-left" id="home-search">
+        <div class="input-group">
+          <%= simple_form_for @search ||= Search.new, url: :root, method: :get do |f| %>
+            <%= f.input :category, label: false, placeholder: "Person Photo, TV, Demotivational, Emoticon, Animal, Other" %>
+            <%= f.submit class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </form>
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+      <li><%= link_to 'Add Meme', new_meme_path %></li>
+      <li><a target="_ext">Signed in as <%= current_user.email %></a></li>
+      <% end %>
+      <li>
+        <% if user_signed_in? %>
+      <li><%= link_to("Not You?", destroy_user_session_path, :method => :delete) %></li><br><br>
+        <% else %>
+      <p class="notice"><%= notice %></p>
+      <font color="red" class="alert"><%= alert %></font>
+        <% end %>
+    </ul>
+  </div>
+</nav>
+<body class="container" id="main">>
+  <div>
   <%= yield %>
 
 </body>

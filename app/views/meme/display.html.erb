@@ -1,5 +1,8 @@
-<center><h1>Search Results for Category: <%= @categories.first.category %></h1><br><br>
-  
+<center><h1>Search Results</h1><hr><br>
+  <% if @memes.empty? %>
+    <em> No memes found for your search '<%= @search.category%>'</em>
+  <% end %>
+
 <% @categories.each do |meme| %>
   <%= image_tag meme.photo.url(:thumb), class: "media-object" %>
   <a href="<%= meme.photo.url %>">Larger</a><br>
