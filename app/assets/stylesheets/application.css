@@ -1,16 +1,6 @@
-
-/*=require_tree
-*=require_tree
-*/
 /*
-A custom Bootstrap 3.1 'Google Plus style' theme
-from http://bootply.com
-
-This CSS code should follow the 'bootstrap.css'
-in your HTML file.
-
-license: MIT
-author: bootply.com
+*= require_tree .
+*= require_self
 */
 
 @import url(http://fonts.googleapis.com/css?family=Roboto:400);
