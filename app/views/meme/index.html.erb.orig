@@ -1,0 +1,55 @@
+<center><h1>All Memes!</h1><hr>
+
+<% @memes.each do |meme| %>
+  <%= image_tag meme.photo.url(:thumb), class: "media-object" %>
+  <a href="<%= meme.photo.url %>">Larger</a><br>
+  <form>
+<<<<<<< HEAD
+    <textarea name="text_area" rows="1" cols="80">
+=======
+    <textarea name="text_area" rows="1" cols="85">
+>>>>>>> ac674493f74466f66c6f659a64ebed2a9b49fd5e
+      <%= "http://teamemer.herokuapp.com#{meme.photo.url}" %>
+    </textarea><br>
+    <input type="button" class="btn btn-danger" value="Click and Cmd+C" onClick="javascript:this.form.text_area.focus();this.form.text_area.select();">
+  </form>
+  <br>Category: <%= meme.category %><br><br>
+<<<<<<< HEAD
+<% end %>
+
+<% if @category.nil? %>
+  <div class="panel panel-warning">
+    <div class="panel-heading">
+      <h3 class="panel-title">Search</h3>
+    </div>
+    <%= simple_form_for @memes, url: :root do |f| %>
+      <div class="panel-body">
+        <%= f.input :category, as: :select, collection: ['Person Photo', 'TV', 'Demotivational', 'Emoticon', 'Animal', 'Other'], :prompt => 'Select Category' %><br><br>
+        <%= f.button :submit, 'Search', class: "btn btn-warning" %>
+      </div>
+    <% end %>
+  </div>
+=======
+>>>>>>> ac674493f74466f66c6f659a64ebed2a9b49fd5e
+<% end %>
+</center>
+
+<SCRIPT LANGUAGE="JavaScript">
+<SPAN ID="copytext" STYLE="height:150;width:162;background-color:pink">
+<<<<<<< HEAD
+This text will be copied onto the clipboard when you click the button below. Try it!
+=======
+>>>>>>> ac674493f74466f66c6f659a64ebed2a9b49fd5e
+</SPAN>
+
+<TEXTAREA ID="holdtext" STYLE="display:none;">
+</TEXTAREA>
+<BUTTON onClick="ClipBoard();">Copy to Clipboard</BUTTON>
+
+function ClipBoard()
+{
+holdtext.innerText = copytext.innerText;
+Copied = holdtext.createTextRange();
+Copied.execCommand("Copy");
+}
+</SCRIPT>

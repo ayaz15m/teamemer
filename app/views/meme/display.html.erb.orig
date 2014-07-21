@@ -1,0 +1,17 @@
+<<<<<<< HEAD
+<center><h1>Search Results for Category: <%= @categories.first.category %></h1><br><br>
+  
+=======
+<center><h1>Search Results</h1><hr><br>
+  <% if @memes.empty? %>
+    <em> No memes found for your search '<%= @search.category%>'</em>
+  <% end %>
+
+>>>>>>> ac674493f74466f66c6f659a64ebed2a9b49fd5e
+<% @categories.each do |meme| %>
+  <%= image_tag meme.photo.url(:thumb), class: "media-object" %>
+  <a href="<%= meme.photo.url %>">Larger</a><br>
+  <%= meme.photo.url %><br>
+  Category: <%= meme.category %><br><br>
+<% end %>
+</center>
