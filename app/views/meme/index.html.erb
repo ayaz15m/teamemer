@@ -5,7 +5,7 @@
   <a href="<%= meme.photo.url %>">Larger</a><br>
   <form>
     <textarea name="text_area" rows="1" cols="85">
-      <%= "http://teamemer.herokuapp.com#{meme.photo.url}" %>
+      <%= meme.photo.url %>
     </textarea><br>
     <input type="button" class="btn btn-danger" value="Click and Cmd+C" onClick="javascript:this.form.text_area.focus();this.form.text_area.select();">
   </form>
